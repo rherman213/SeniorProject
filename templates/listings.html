@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+  <p> <h3>Listed Products:</h3>
+    
+
+  </p>
+  <div class="container-sm">
+    <div class="card-body">
+      <form action="/testtt" method="POST">
+  Select Category:    <select name="category" style="background-color: rgb(206, 206, 236);">
+
+    {% for i in categories %}
+      <option value="{{ i }}" SELECTED>{{ i }}</option>
+    {% endfor %}
+  </select>
+  <br>
+  <br>
+  Select Subcategory 1:   <select name="sub1" style="background-color: rgb(197, 197, 247);">
+    <option value="none" SELECTED>(none)</option>
+    {% for j in sub1 %}
+      <option value="{{ j }}">{{ j }}</option>
+    {% endfor %}
+  </select>
+  <br>
+  <br>
+
+  Select Subcategory 2:   <select name="sub2" style="background-color: rgb(174, 174, 245);">
+    <option value="none" SELECTED>(none)</option>
+    {% for k in sub2 %}
+      <option value="{{ k }}">{{ k }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit"></button> 
+</form>
+
+  
+      
+</body></html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+    <style>
+      .button {
+         background-color: rgb(0, 153, 255);
+         color: rgb(210, 235, 241);
+         border: none;
+         border-radius: 7px;
+         box-shadow: 0 5px rgb(17, 45, 58);
+         display: inline-block;
+         padding: 10px;
+         font-size: 16px;
+         cursor: pointer;
+         text-align: center;
+         outline: none;
+      }
+      .button:hover {
+         background-color: rgb(68, 0, 255);
+      }
+      .button:active {
+         background-color: rgb(162, 0, 255);
+         box-shadow: 0 5px rgb(129, 10, 113);
+         transform: translateY(2px);
+      }
+   </style>
+  Please confirm the following information:
+    <br>
+    <br>
+    <h3>{{ product_name }}</h3>
+  <b>Buyer:</b> {{ username }} <br>
+  <b>Purchasing Product:</b> #{{ product_id }} {{ product_name }} <br>
+  <b>Cost:</b> {{ price }} from seller <u>{{ seller_email }}</u>
+  <p>Card on file: xxxx-xxxx-xxxx-{{ card_num }} </p> <br>
+   <a class="button" href="/PurchaseConfirmed" style="text-decoration:none">Confirm Purchase</a> <br><br>
+   <a class="button" href="/listings" style="text-decoration:none">Go Back</a>
+
+  
+
+</body></html>

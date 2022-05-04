@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+    <form action="/remove" method="POST">
+  <p><h3>Your Listed Products:</h3>
+    {% for i in range(0,len) %}
+    <p>{{ listed[i][2] }} - Product ID: {{ listed[i][1] }} - {{ listed[i][3] }} - {{ listed[i][4] }} - Quantity Remaining: {{ listed[i][7] }}</p>
+    <input type="submit" name="product" value="Remove Product #{{ listed[i][1] }}"><br><br>
+    ---------------------------------------------------------------------------------------------------------------------------<br>
+    {% endfor %}
+  </form>
+
+
+    <p><h3>Your Sold Products:</h3>
+      {% for i in range(0,len2) %}
+      <p>Product ID: {{ sold[i][2] }} - {{ sold[i][3] }} - {{ sold[i][4] }}</p>
+      ---------------------------------------------------------------------------------------------------------------------------<br>
+      {% endfor %}
+  <br>
+  <br>
+<br>
+<br>
+
+  
+      
+</body></html>

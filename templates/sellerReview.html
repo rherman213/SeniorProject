@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+{{ seller }} 
+    <br>
+    <br>
+    <form action="/sellerReview" method="POST">
+    <label>Rating:</label> <br><br>
+    <input type="radio" name="rating" id="5" value="5"> &#127775; &#127775; &#127775; &#127775; &#127775; <br>
+    <input type="radio" name="rating" id="4" value="4"> &#127775; &#127775; &#127775; &#127775; <br>
+    <input type="radio" name="rating" id="3" value="3"> &#127775; &#127775; &#127775; <br>
+    <input type="radio" name="rating" id="2" value="2"> &#127775; &#127775; <br>
+    <input type="radio" name="rating" id="1" value="1"> &#127775; <br>
+    <br>
+  
+    <input type="submit" name="sellerReview" value="{{ seller }}"><br><br>
+    </form>
+  
+
+</body></html>

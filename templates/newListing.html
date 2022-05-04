@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+
+  <body>
+    <b>Enter the information below of your new listing:</b>
+    <br>
+    <br>
+    <form action="/confirmListing" method="POST">
+          <br>
+          <label>Seller Email: {{ username }}</label>
+          <br>
+          <br>
+          <label>Category:</label>   <select name="category" style="background-color: rgb(206, 206, 236);">
+            {% for i in categories %}
+              <option value="{{ i }}" SELECTED>{{ i }}</option>
+            {% endfor %}
+            </select>
+          <br>
+          <br>
+          <label>Title:</label>
+          <input name="title" ></input>
+          <br>
+          <br>
+          <label>Product_Name:</label>
+          <input name="product_name" ></input>
+          <br>
+          <br>
+          <label>Product_Description:</label>
+          <input name="product_description" ></input>
+          <br>
+          <br>
+          <label>Price:</label>
+          <input name="price" ></input>
+          <br>
+          <br>
+          <label>Quantity:</label>
+          <input type="number" name="quantity" min="1" step="1"/>
+          <br>
+          <br>
+          <input type="submit"></button> 
+          <br>
+          <br>
+      </form>
+      
+</body></html>
+
+
+
+

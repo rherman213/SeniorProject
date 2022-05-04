@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+  <p><h3>Listed Products:</h3>
+
+
+  </p>
+  <div class="container-sm">
+    <div class="card-body">
+</form>
+  <br>
+
+  
+    {% for i in range(0,len) %}
+          {% if products[i][7]  %}
+         <h2>{{products[i][3]}} </h2> 
+         <p> {{products[i][4]}} <br>
+           {{products[i][5]}} 
+           <p style="color:rgb(65, 211, 20);">(Price: {{products[i][6]}})</p>
+           Category: {{ products[i][2]}} <br>
+           Product ID: {{products[i][1]}} <br> 
+           Quantity: {{ products[i][7] }}<br>
+           From Seller: {{ products[i][0] }}</p>
+          <form action="/readReview" method="POST">
+          <input type="submit" name="reviewButton" value="Remove Product #{{ products[i][1] }}"><br><br>
+          </form>
+          ---------------------------------------------------------------------------------------------------------------------------<br>
+          {% endif %}
+          {% endfor %}
+  
+  
+  <br>
+  <br>
+<br>
+<br>
+
+  
+      
+</body></html>

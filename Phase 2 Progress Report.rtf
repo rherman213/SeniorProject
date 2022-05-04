@@ -1,0 +1,100 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red140\green211\blue254;
+\red194\green126\blue101;\red202\green202\blue202;\red212\green214\blue154;\red70\green137\blue204;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c61176\c86275\c99608;
+\cssrgb\c80784\c56863\c47059;\cssrgb\c83137\c83137\c83137;\cssrgb\c86275\c86275\c66667;\cssrgb\c33725\c61176\c83922;}
+\margl1440\margr1440\vieww17880\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Phase 2 Progress Review - Ryan Herman (rqh5359)\
+\
+This file explains the specifications, schema, code, and web design of my Nittany Market Project as of March 21, 2022. \
+\
+\
+Specifications:\
+\
+Operating System: macOS\
+Code Environment: VSCode\
+Programming Language: Python\
+SQL Language: Sqlite3\
+Web Development: Flask\
+\
+Run the app using \'93python -m flask run\'94\
+\
+\
+Schema:\
+\
+There are 12 tables created following the files given in class, those are:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Address, Buyers, Categories, Credit_Cards, Local_Vendors, Orders, Product_Listing, Ratings, Reviews, Sellers, Users, and Zipcode_Info\
+\
+The schema is listed below:\
+\
+\strokec5 Address (address_id TEXT PRIMARY KEY, zipcode INTEGER, street_num INTEGER, street_name TEXT)\
+\
+Buyers (email TEXT PRIMARY KEY, first_name TEXT, last_name TEXT, gender TEXT, age INTEGER, home_address_id TEXT, billing_address_id TEXT, FOREIGN KEY(email) REFERENCES Users (email), FOREIGN KEY(home_address_id) REFERENCES Address (address_ID), FOREIGN KEY(billing_address_id) REFERENCES Address (address_ID)\
+\
+Categories (parent_category TEXT,category_name TEXT PRIMARY KEY)\
+\
+Credit_Cards (credit_card_num TEXT PRIMARY KEY,card_code INTEGER,expire_month INTEGER,expire_year INTEGER,card_type TEXT,Owner_email TEXT,  FOREIGN KEY(Owner_email) REFERENCES Users (email)\
+\
+Local_Vendors (email TEXT PRIMARY KEY,business_name TEXT,business_address_ID TEXT,customer_service_number TEXT,  FOREIGN KEY(email) REFERENCES Users (email)\
+\
+Orders (Transaction_ID TEXT PRIMARY KEY,Seller_Email TEXT,Listing_ID INTEGER,Buyer_Email TEXT,Date TEXT,Quantity INTEGER,Payment INTEGER, FOREIGN KEY(Seller_email) REFERENCES Sellers (email), FOREIGN KEY(Buyer_Email) REFERENCES Buyers (email), FOREIGN KEY(Listing_ID) REFERENCES Product_Listing (Listing_ID)\
+\
+Product_Listing (Seller_Email TEXT,Listing_ID TEXT PRIMARY KEY,Category TEXT,Title TEXT,Product_Name TEXT,Product_Description TEXT,Price TEXT,Quantity INTEGER, FOREIGN KEY(Seller_email) REFERENCES Users (email), FOREIGN KEY(Category) REFERENCES Categories (category_name)\
+\
+Ratings (Buyer_Email TEXT,Seller_Email TEXT,Rating INTEGER,Rating_Desc TEXT, FOREIGN KEY(Seller_email) REFERENCES Sellers (email), FOREIGN KEY(Buyer_Email) REFERENCES Buyers (email)\
+\
+Reviews (Buyer_Email TEXT,Seller_Email TEXT,Listing_ID TEXT PRIMARY KEY,Review_Desc TEXT, FOREIGN KEY(Seller_email) REFERENCES Sellers (email), FOREIGN KEY(Buyer_Email) REFERENCES Buyers (email), FOREIGN KEY(Listing_ID) REFERENCES Product_Listing (Listing_ID)\
+\
+Sellers (email TEXT PRIMARY KEY,routing_number TEXT,account_number INTEGER,balance INTEGER,  FOREIGN KEY(email) REFERENCES Users (email)\
+\
+Users (email TEXT PRIMARY KEY, password TEXT)\
+\
+Users2 (email TEXT PRIMARY KEY, hashed_password TEXT)\
+\
+Zipcode_Info (zipcode TEXT PRIMARY KEY,city TEXT,state_id TEXT,population,density,county_name,timezone)\cf6 \cb1 \strokec6 \
+\
+\cf2 ***Note: A 13th table, Users2, is created to store hashed passwords and then renamed as Users right after the original Users table is destroyed\cf6 \
+\
+\
+\
+\
+\cf2 Important Functions:\
+\
+Data Population:\
+Before the app is run, all data is loaded into tables using sqlite3 statements\
+\
+\
+
+\f1 \cb3 \strokec7 @\strokec4 app\strokec7 .route\strokec6 (\strokec5 '/'\strokec6 )\
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec8 def\strokec6  \strokec7 home\strokec6 ():
+\f0 \cb1 \
+	- This is the page that is loaded in first. Upon load in, all passwords are hashed using sha256 cryptography and the unwashed passwords are dropped. This 	function then loads in the login.html page\cf6 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf2 \cb3 \strokec7 @\strokec4 app\strokec7 .route\strokec6 (\strokec5 '/'\strokec6 , \strokec4 methods\strokec6 =[\strokec5 'POST'\strokec6 ])\
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec8 def\strokec6  \strokec7 func1\strokec6 ():\
+	- This function is responsible for checking login credentials. It does by trying to fetch both the username and the 	password hash stored in the Users table. A result of 0 means login was unsuccessful, a return of 1 means the login was 	successful. This function also checks the status of the user (buyer, seller, both) for future use. Successful login 	links to the respective home page. A failed login links to the failed login page.\cf6 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf6 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+}

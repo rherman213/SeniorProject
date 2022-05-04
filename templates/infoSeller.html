@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+  <h3>User Account Information:</h3>
+  <p>
+    Username: {{ sellerInfo[0][0] }}
+    <br>
+    <br>
+    Your Average Star Rating: {{ average }} 
+    <br>
+    <br>
+    Balance: ${{ sellerInfo[0][3] }}
+    <br>
+    <br>
+    Account Number: {{ sellerInfo[0][2] }}
+    <br>
+    <br>
+    Routing Number: {{ sellerInfo[0][1] }}
+    <br>
+    <br>
+    <a class="btn btn-success" type="submit"><button>Change Password</button></a>
+    <input newPassword="newPassword"></input>
+    <br>
+    <br>
+    <a class="btn btn-success" href="/sellerHome"><button>Return Home</button></a>
+  </p>
+      
+</body></html>

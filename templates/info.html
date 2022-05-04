@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en">
+  <head><title> Main Page </title>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+  <h3>User Account Information:</h3>
+  <p>
+    Username: {{ var1 }}
+    <br>
+    <br>
+    First Name: {{ var2 }}
+    <br>
+    <br>
+    Last Name: {{ var3 }}
+    <br>
+    <br>
+    Age: {{ var4 }}
+    <br>
+    <br>
+    Gender: {{ var5 }}
+    <br>
+    <br>
+    Address: {{ var7 }} {{ var8 }}, {{ var9 }}, {{ var10 }} {{ var6 }}
+    <br>
+    <br>
+    Credit Card: xxxx-xxxx-xxxx-{{ var11 }}
+    <br>
+    <br>
+    <form action="/newpassword" method="POST">
+      <input type="submit" value="Change Password">
+      <input name="newpassword">
+      </form>
+      <br>
+      <br>
+    <a class="btn btn-success" href="/main"><button>Return Home</button></a>
+  </p>
+      
+</body></html>
